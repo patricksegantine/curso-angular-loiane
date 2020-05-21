@@ -1,0 +1,73 @@
+<div class="card">
+  <div class="card-header">
+    <div class="float-left">
+      <h4>Cursos</h4>
+    </div>
+    <div class="float-right">
+      <button type="button" class="btn btn-primary" [routerLink]="['novo']">
+        Novo Curso
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <table
+      class="table table-hover"
+      *ngIf="cursos$ | async as cursos; else loading"
+    >
+      <thead>
+        <th>#</th>
+        <th>Curso</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let curso of cursos">
+          <td>{{ curso.id }}</td>
+          <td>{{ curso.nome }}</td>
+          <td>
+            <span class="float-right">
+              <button
+                class="btn btn-outline-warning mb-1 btn-sm"
+                (click)="onEditar(curso.id)"
+              >
+                Atualizar
+              </button>
+
+              <button
+                class="btn btn-outline-danger mb-1 btn-sm"
+                (click)="onExcluir(curso)"
+              >
+                Remover
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #loading>
+      <span>Carregando...</span>
+    </ng-template>
+
+    <!--ng-template #loadingError>
+      <div *ngIf="error$ | async; else loading">
+        <span>Erro ao carregar os dados.</span>
+      </div>
+      <ng-template #loading>
+        <span>Carregando...</span>
+      </ng-template>
+    </ng-template-->
+
+    <!-- codigo substituído pelo componente confirm-modal -->
+    <!--ng-template #deleteModal>
+      <div class="modal-body text-center">
+        <p>Confirma a exclusão do curso '{{ cursoSelecionado.nome }}'?</p>
+        <button type="button" class="btn btn-danger mr1" (click)="onConfirm()">
+          Sim, vou excluir
+        </button>
+        <button type="button" class="btn btn-link" (click)="onDecline()">
+          Cancelar
+        </button>
+      </div>
+    </ng-template-->
+  </div>
+</div>

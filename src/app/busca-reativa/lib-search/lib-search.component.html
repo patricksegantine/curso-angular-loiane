@@ -1,0 +1,35 @@
+<div class="search-table">
+  <div class="search-box mb-2">
+    <div class="row">
+      <div class="col-md-9">
+        <input
+          type="text"
+          id="myInput"
+          class="form-control"
+          [formControl]="queryField"
+          placeholder="Pesquisar libs"
+        />
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-lg btn-success" (click)="onSearch()">Pesquisar</button>
+      </div>
+    </div>
+  </div>
+  <div class="search-list">
+    <h3>{{ total }} registros encontrados</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of result$ | async">
+          <td>{{ result.name }}</td>
+          <td>{{ result.version }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

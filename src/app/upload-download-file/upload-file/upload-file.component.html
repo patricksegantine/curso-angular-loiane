@@ -1,0 +1,57 @@
+<div class="mb-2">
+  <div class="custom-file mb-1">
+    <input
+      type="file"
+      class="custom-file-input"
+      id="customFile"
+      multiple
+      (change)="onChange($event)"
+    />
+    <label class="custom-file-label" for="customFile" id="customFileLabel">
+      Selecione o arquivo
+    </label>
+  </div>
+  <div class="progress mb-1">
+    <div
+      class="progress-bar"
+      role="progressbar"
+      [style.width]="progress + '%'"
+      [attr.aria-valuenow]="progress"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    >
+      {{ progress }}%
+    </div>
+  </div>
+  <div>
+    <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="!files"
+      (click)="onUpload()"
+    >
+      Enviar arquivo(s)
+    </button>
+  </div>
+</div>
+<hr />
+<div>
+  <form #fileForm="ngForm" novalidate>
+    <input
+      type="text"
+      class="form-control mb-1"
+      placeholder="Nome do arquivo"
+      name="arquivo"
+      ngModel
+      required
+    />
+    <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="!fileForm.form.valid"
+      (click)="onDownload(fileForm.form.controls['arquivo'].value)"
+    >
+      Download
+    </button>
+  </form>
+</div>

@@ -1,0 +1,22 @@
+{
+  "cursos": [
+    {
+      "id": 1,
+      "nome": "Angular",
+      "autor": "Loiane Groner"
+    },
+    {
+      "id": 2,
+      "nome": "Java OO",
+      "autor": "Loiane Grone"
+    },
+    {
+      "nome": "Angular Material",
+      "id": 3
+    },
+    {
+      "nome": "Bootcamp Node.js, React, React Native",
+      "id": 4
+    }
+  ]
+}
